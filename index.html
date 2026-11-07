@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YO FREELANCER | El Marketplace de Servicios & Oficios de Próxima Generación</title>
+  <link rel="icon" type="image/png" href="assets/icon-verde-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --guisante: #A5D067;
+      --oliva: #A1BA42;
+      --oliva-hover: #8BA531;
+      --noche: #16200A;
+      --mandarina: #FF6B3D;
+      --papel: #F5F1E6;
+      --superficie: #1F2B10;
+      --card: #273518;
+      --card-inner: #31411E;
+      --border: #46552D;
+      --text-muted: #A3AB8F;
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--noche);
+      color: var(--papel);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand-font {
+      font-family: 'Fraunces', serif;
+    }
+
+    /* ── NAVEGACIÓN ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 8%;
+      background: rgba(22, 32, 10, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-brand img {
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .nav-brand-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--papel);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-brand-text span {
+      color: var(--guisante);
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--papel);
+      background: var(--card);
+    }
+
+    .btn-cta {
+      background: var(--guisante);
+      color: var(--noche) !important;
+      font-weight: 700;
+      padding: 9px 18px !important;
+      border-radius: 999px !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(165, 208, 103, 0.3);
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cta:hover {
+      background: var(--oliva-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(165, 208, 103, 0.4);
+    }
+
+    /* ── HERO SECTION ── */
+    header.hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 130px 8% 60px;
+      position: relative;
+      gap: 40px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(165, 208, 103, 0.18) 0%, rgba(22, 32, 10, 0) 70%);
+      top: 10%;
+      left: 5%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 620px;
+      z-index: 2;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--superficie);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--guisante);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--papel);
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--guisante), var(--oliva));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      gap: 28px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .metric-item h4 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--guisante);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .metric-item p {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── PHONE SIMULATOR ── */
+    .simulator-container {
+      position: relative;
+      z-index: 2;
+      width: 360px;
+      flex-shrink: 0;
+    }
+
+    .smartphone {
+      width: 100%;
+      background: var(--superficie);
+      border-radius: 40px;
+      border: 8px solid #2e3e18;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(165, 208, 103, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 640px;
+    }
+
+    .phone-top-bar {
+      height: 28px;
+      background: var(--superficie);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .phone-notch {
+      width: 120px;
+      height: 16px;
+      background: #111a07;
+      border-radius: 0 0 12px 12px;
+      margin: 0 auto;
+    }
+
+    .phone-screen {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background: var(--noche);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sim-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .sim-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .sim-badge-green { background: rgba(165, 208, 103, 0.18); color: var(--guisante); }
+    .sim-badge-orange { background: rgba(255, 107, 61, 0.18); color: var(--mandarina); }
+
+    /* ── SECCIONES ── */
+    section {
+      padding: 100px 8%;
+      position: relative;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 60px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      margin-bottom: 16px;
+      color: var(--papel);
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* ── INTERACTIVE APP TABS ── */
+    .app-tabs-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .app-tab-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .app-tab-btn:hover, .app-tab-btn.active {
+      background: var(--guisante);
+      color: var(--noche);
+      border-color: var(--guisante);
+      transform: translateY(-2px);
+    }
+
+    .tab-content-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      background: var(--superficie);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 45px;
+    }
+
+    .tab-desc h3 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: var(--papel);
+    }
+
+    .tab-desc p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+
+    .tab-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tab-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .tab-checklist li svg {
+      color: var(--guisante);
+      flex-shrink: 0;
+    }
+
+    /* ── CALCULADORA DE MODELO DE NEGOCIO ── */
+    .calculator-card {
+      background: var(--superficie);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 45px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 50px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .slider-group {
+      margin-bottom: 28px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .slider-header span:last-child {
+      color: var(--guisante);
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: var(--card-inner);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--guisante);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(165, 208, 103, 0.6);
+    }
+
+    .calc-results {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(70, 85, 45, 0.5);
+    }
+
+    .result-total {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid var(--guisante);
+    }
+
+    .result-total h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+    }
+
+    .result-total .total-amount {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--guisante);
+      font-family: 'Fraunces', serif;
+    }
+
+    /* ── PILARES DE SEGURIDAD EXTREMA ── */
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .sec-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .sec-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--guisante);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .sec-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .sec-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--papel);
+    }
+
+    .sec-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 8% 40px;
+      background: #111a07;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .footer-rights {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      header.hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 110px;
+      }
+      .hero-content { max-width: 100%; }
+      .hero-metrics { justify-content: center; }
+      .tab-content-box { grid-template-columns: 1fr; }
+      .calculator-card { grid-template-columns: 1fr; }
+      .simulator-container { width: 100%; max-width: 360px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <nav id="navbar">
+    <a href="#" class="nav-brand">
+      <img src="assets/icon-verde-512.png" alt="YO FREELANCER Logo">
+      <div class="nav-brand-text">YO <span>FREELANCER</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#demostracion">Simulador</a>
+      <a href="#modelo-negocio">Modelo Financiero</a>
+      <a href="#seguridad">Seguridad</a>
+      <a href="#propuesta">Propuesta</a>
+      <a href="app/" target="_blank" class="btn-cta" style="background: var(--oliva); text-decoration: none;">🚀 Abrir App Web</a>
+      <button class="btn-cta" onclick="openPitchModal()">💼 Pitch Deck</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="badge-pill">🛡️ Marketplace Seguro con Custodia Escrow</div>
+      <h1 class="hero-title">El marketplace que <span>formaliza y revoluciona</span> los servicios en México.</h1>
+      <p class="hero-subtitle">
+        Conectamos a técnicos, profesionistas y trabajadores de oficios (<strong>Yoers</strong>) con clientes residenciales y comerciales mediante <strong>identidad biométrica verificada</strong>, <strong>pagos en garantía (Escrow)</strong> y un <strong>motor publicitario de alcance hiperlocal</strong>.
+      </p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="app/" target="_blank" class="btn-cta" style="text-decoration: none;">🚀 Probar App Web en Vivo</a>
+        <a href="app-release.apk" download class="app-tab-btn" style="text-decoration: none; border-color: var(--guisante); color: var(--papel);">📲 Descargar APK Beta</a>
+        <a href="#demostracion" class="app-tab-btn" style="text-decoration: none;">⚡ Ver Simulador</a>
+        <button class="app-tab-btn" onclick="openPitchModal()">💼 Presentar Pitch Deck</button>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <h4>10%</h4>
+          <p>Comisión de Intermediación</p>
+        </div>
+        <div class="metric-item">
+          <h4>100%</h4>
+          <p>Ganancia Neta en Yoer Ads</p>
+        </div>
+        <div class="metric-item">
+          <h4>$45,000M</h4>
+          <p>TAM de Servicios en LATAM</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIMULADOR INTERACTIVO HERO -->
+    <div class="simulator-container">
+      <div class="smartphone">
+        <div class="phone-top-bar">
+          <span>9:41</span>
+          <div class="phone-notch"></div>
+          <span>5G 🔋</span>
+        </div>
+        <div class="phone-screen" id="simScreen">
+          <!-- Vista interactiva precargada (Feed de Clientes) -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <div>
+              <div style="font-size: 11px; color: var(--text-muted);">Bienvenido a</div>
+              <div style="font-size: 15px; font-weight: 800; color: var(--guisante);">YO FREELANCER 👋</div>
+            </div>
+            <div style="background: var(--card); padding: 5px 10px; border-radius: 999px; font-size: 11px; border: 1px solid var(--border);">
+              🟢 Modo Sandbox
+            </div>
+          </div>
+
+          <!-- Carrusel Patrocinado -->
+          <div style="background: linear-gradient(135deg, #1f2b10, #273518); border: 1.5px solid var(--mandarina); border-radius: 14px; padding: 12px; position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="sim-badge sim-badge-orange">⭐ Patrocinado (Yoer Ads)</span>
+              <span style="font-size: 11px; font-weight: 800; color: var(--guisante);">$450 MXN</span>
+            </div>
+            <div style="font-weight: 800; font-size: 13px; color: var(--papel);">Mantenimiento Eléctrico Residencial</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">⚡ Carlos Mendoza · 5.0 (Top Yoer)</div>
+          </div>
+
+          <!-- Checkout Escrow Preview -->
+          <div class="sim-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 11px; font-weight: 800; color: var(--text-muted);">PAGO CON GARANTÍA</span>
+              <span class="sim-badge sim-badge-green">🛡️ Custodia Activa</span>
+            </div>
+            <div style="font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span style="color: var(--text-muted);">Servicio:</span>
+              <span>$1,000.00 MXN</span>
+            </div>
+            <div style="font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span style="color: var(--text-muted);">Comisión YoFreelancer (10%):</span>
+              <span style="color: var(--guisante); font-weight: 700;">$100.00 MXN</span>
+            </div>
+            <div style="font-size: 12px; display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Liberación Yoer:</span>
+              <span style="font-weight: 800;">$900.00 MXN</span>
+            </div>
+          </div>
+
+          <!-- Tarjetas Sandbox -->
+          <div class="sim-card" style="border-left: 3px solid var(--guisante);">
+            <div style="font-size: 11px; font-weight: 800; margin-bottom: 2px;">Tarjeta de Prueba Stripe</div>
+            <div style="font-size: 12px; font-family: monospace;">4242 •••• •••• 4242</div>
+            <div style="font-size: 10px; color: var(--guisante); margin-top: 4px;">✓ Aprobación inmediata sin fricción</div>
+          </div>
+
+          <a href="app/" target="_blank" class="btn-cta" style="width: 100%; justify-content: center; margin-top: auto; text-decoration: none;">
+            🚀 Abrir App en Vivo (Web)
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN DEMOSTRACIÓN INTERACTIVA -->
+  <section id="demostracion">
+    <div class="section-head">
+      <div class="badge-pill">Experiencia Móvil Nativa</div>
+      <h2>Conoce la aplicación en acción</h2>
+      <p>Selecciona una sección para explorar los flujos reales de la aplicación construidos en Flutter.</p>
+    </div>
+
+    <div class="app-tabs-nav">
+      <button class="app-tab-btn active" onclick="switchTab(0, this)">📱 Feed & Búsqueda (Cliente)</button>
+      <button class="app-tab-btn" onclick="switchTab(1, this)">🛡️ Checkout Escrow (10% Fee)</button>
+      <button class="app-tab-btn" onclick="switchTab(2, this)">🚀 Yoer Ads (Publicidad)</button>
+      <button class="app-tab-btn" onclick="switchTab(3, this)">🪪 Verificación KYC Facial</button>
+      <button class="app-tab-btn" onclick="switchTab(4, this)">💰 Cartera YOER Cash</button>
+    </div>
+
+    <div class="tab-content-box" id="tabContent">
+      <div class="tab-desc">
+        <h3 id="tabTitle">Explorador Inteligente de Servicios</h3>
+        <p id="tabText">Los clientes encuentran electricistas, plomeros, programadores o diseñadores con filtros por categoría, ubicación geográfica y reputación acumulada.</p>
+        <ul class="tab-checklist" id="tabPoints">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Carrusel VIP para Yoers patrocinados con mayor visibilidad</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Calificaciones y reseñas 100% verificadas post-servicio</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Búsqueda con geolocalización y mapa interactivo</li>
+        </ul>
+      </div>
+      <div class="sim-card" style="background: var(--noche); border: 2px solid var(--border); padding: 24px;" id="tabPreview">
+        <div style="font-size: 13px; font-weight: 800; color: var(--guisante); margin-bottom: 12px;">VISTA EN PANTALLA:</div>
+        <div style="background: var(--card); border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <div style="width: 44px; height: 44px; border-radius: 22px; background: var(--guisante); display: flex; align-items: center; justify-content: center; font-weight: 900; color: var(--noche);">CM</div>
+            <div>
+              <div style="font-weight: 800; font-size: 14px;">Carlos Mendoza</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Técnico Electricista Certificado</div>
+            </div>
+            <div style="margin-left: auto; color: #ffb703; font-size: 13px; font-weight: 700;">★ 5.0</div>
+          </div>
+          <div style="margin-top: 12px; font-size: 13px; line-height: 1.4;">Instalaciones eléctricas residenciales y comerciales con garantía de seguridad.</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px;">
+            <span style="font-weight: 800; font-size: 16px; color: var(--guisante);">$450 MXN / visita</span>
+            <span class="sim-badge sim-badge-green">Disponible Hoy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELO DE NEGOCIO & SIMULADOR FINANCIERO -->
+  <section id="modelo-negocio">
+    <div class="section-head">
+      <div class="badge-pill">Rentabilidad de Alto Margen</div>
+      <h2>Simulador Financiero para Inversionistas</h2>
+      <p>Calcula los ingresos proyectados combinando el take-rate del 10% por servicio y los ingresos 100% directos de Yoer Ads.</p>
+    </div>
+
+    <div class="calculator-card">
+      <div>
+        <div class="slider-group">
+          <div class="slider-header">
+            <span>Servicios completados por mes</span>
+            <span id="labelServicios">2,500</span>
+          </div>
+          <input type="range" id="rangeServicios" min="200" max="20000" step="100" value="2500" oninput="updateCalculator()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span>Ticket promedio por servicio (MXN)</span>
+            <span id="labelTicket">$800 MXN</span>
+          </div>
+          <input type="range" id="rangeTicket" min="300" max="3000" step="50" value="800" oninput="updateCalculator()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span>Yoers contratando Yoer Ads por mes</span>
+            <span id="labelAds">250 Yoers</span>
+          </div>
+          <input type="range" id="rangeAds" min="10" max="3000" step="10" value="250" oninput="updateCalculator()">
+        </div>
+
+        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 20px;">
+          💡 <strong>Regla de negocio:</strong> De cada servicio, la plataforma retiene el 10% mediante split payment automático. Los ingresos de Yoer Ads (\$199 MXN promedio por campaña) son 100% margen bruto para la plataforma.
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div>
+          <div class="result-row">
+            <span style="color: var(--text-muted); font-size: 14px;">Volumen Bruto (GMV):</span>
+            <strong id="resGmv" style="font-size: 16px;">$2,000,000 MXN</strong>
+          </div>
+          <div class="result-row">
+            <span style="color: var(--text-muted); font-size: 14px;">Ganancia por Comisiones (10%):</span>
+            <strong id="resComisiones" style="font-size: 16px; color: var(--guisante);">$200,000 MXN</strong>
+          </div>
+          <div class="result-row">
+            <span style="color: var(--text-muted); font-size: 14px;">Ganancia Directa Yoer Ads:</span>
+            <strong id="resAds" style="font-size: 16px; color: var(--mandarina);">$49,750 MXN</strong>
+          </div>
+        </div>
+
+        <div class="result-total">
+          <h4>Ingreso Mensual Plataforma</h4>
+          <div class="total-amount" id="resTotalMensual">$249,750 MXN</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
+            ARR Proyectado (Anual): <strong id="resTotalAnual" style="color: var(--papel); font-size: 15px;">$2,997,000 MXN</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGURIDAD EXTREMA -->
+  <section id="seguridad">
+    <div class="section-head">
+      <div class="badge-pill">Arquitectura Blindada</div>
+      <h2>Seguridad de Extremo a Extremo</h2>
+      <p>Cero anonimato, cero regateo y trazabilidad total para que contratar o trabajar sea 100% seguro.</p>
+    </div>
+
+    <div class="security-grid">
+      <div class="sec-card">
+        <span class="sec-icon">🛡️</span>
+        <h3>Pago en Garantía (Escrow)</h3>
+        <p>El cliente paga por anticipado. Los fondos se retienen de forma segura en Stripe y el Yoer no recibe el pago hasta que el cliente confirma que el trabajo quedó concluido a satisfacción.</p>
+      </div>
+
+      <div class="sec-card">
+        <span class="sec-icon">🪪</span>
+        <h3>Identidad Facial Biométrica</h3>
+        <p>Microservicio de visión artificial que compara la selfie en vivo del usuario contra su credencial oficial de elector (INE) o pasaporte, validando prueba de vida para evitar perfiles falsos.</p>
+      </div>
+
+      <div class="sec-card">
+        <span class="sec-icon">⚖️</span>
+        <h3>Validación Fiscal SAT & Banxico</h3>
+        <p>Módulo de validación de RFC con homoclave oficial del SAT, validación de CURP de RENAPO y verificación algorítmica de la CLABE interbancaria de 18 dígitos para retiros vía SPEI.</p>
+      </div>
+
+      <div class="sec-card">
+        <span class="sec-icon">🔐</span>
+        <h3>Row Level Security (RLS)</h3>
+        <p>Base de datos PostgreSQL con políticas estrictas de seguridad por fila: cada usuario únicamente puede leer o modificar su propia información, previniendo fuga de datos o accesos no autorizados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Y PROPUESTA -->
+  <section id="propuesta" style="text-align: center; background: linear-gradient(180deg, var(--noche) 0%, #111a07 100%);">
+    <div class="badge-pill">Próximo Paso</div>
+    <h2 style="font-size: clamp(2.2rem, 4vw, 3.5rem); margin: 20px 0 16px;">¿Listo para llevar este proyecto a producción?</h2>
+    <p style="max-width: 600px; margin: 0 auto 36px; color: var(--text-muted); font-size: 1.15rem;">
+      La aplicación móvil en Flutter, el backend en Supabase, los microservicios y el motor de pagos Sandbox están listos para ejecutarse y desplegarse en tiendas.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+      <button class="btn-cta" onclick="openPitchModal()" style="font-size: 16px; padding: 14px 28px !important;">
+        💼 Presentar como Propuesta de Negocio
+      </button>
+      <a href="https://github.com/IDS-HUGO/YO-FREELANCER" target="_blank" class="app-tab-btn" style="font-size: 15px;">
+        ⚡ Repositorio en GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- MODAL PITCH DECK -->
+  <div id="pitchModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: var(--superficie); border: 1.5px solid var(--border); border-radius: var(--radius-xl); max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 40px; position: relative;">
+      <button onclick="closePitchModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; color: var(--text-muted); cursor: pointer;">✕</button>
+      
+      <div class="badge-pill">Dossier Ejecutivo</div>
+      <h2 style="font-size: 2.2rem; margin: 10px 0 16px; color: var(--papel);">YO FREELANCER: Pitch Deck de Negocio</h2>
+      
+      <div style="font-size: 14px; line-height: 1.7; color: var(--papel);">
+        <p><strong>1. El Problema:</strong> 78% de los usuarios desconfía de contratar servicios por falta de garantías, anticipos perdidos y trabajos mal hechos. Por otro lado, los trabajadores independientes sufren por falta de pago y regateo.</p>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 16px 0;">
+        <p><strong>2. La Solución:</strong> Plataforma móvil que integra identidad biométrica (KYC), depósito en garantía (Escrow) y pagos por tarjeta/SPEI/OXXO.</p>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 16px 0;">
+        <p><strong>3. Modelo de Negocio Dual:</strong>
+          <br>• <strong>Take-rate de Transacciones:</strong> 10% retenido de cada servicio contratado.
+          <br>• <strong>Yoer Ads:</strong> Paquetes de publicidad (\$99, \$199 y \$399 MXN) con 100% de margen bruto para la plataforma.
+        </p>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 16px 0;">
+        <p><strong>4. Proyecciones a 3 Años:</strong>
+          <br>• <strong>Año 1:</strong> \$3.77M MXN de facturación | 36,000 servicios.
+          <br>• <strong>Año 3:</strong> \$154.5M MXN de facturación | 1,250,000 servicios completados.
+        </p>
+      </div>
+
+      <div style="margin-top: 24px; text-align: right;">
+        <button class="btn-cta" onclick="closePitchModal()">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="nav-brand">
+        <img src="assets/icon-verde-512.png" alt="YO FREELANCER Logo" style="height: 32px;">
+        <div class="nav-brand-text">YO <span>FREELANCER</span></div>
+      </div>
+      <div class="footer-rights">
+        © 2026 YO FREELANCER México. Todos los derechos reservados. Arquitectura Flutter + Supabase + Stripe.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT INTERACTIVO -->
+  <script>
+    // 1. Datos interactivos para las pestañas de la App
+    const tabsData = [
+      {
+        title: "Explorador Inteligente de Servicios",
+        text: "Los clientes encuentran electricistas, plomeros, programadores o diseñadores con filtros por categoría, ubicación geográfica y reputación acumulada.",
+        points: [
+          "Carrusel de Servicios Recomendados con prioridad visual",
+          "Calificaciones y reseñas 100% verificadas post-servicio",
+          "Búsqueda con geolocalización y mapa interactivo en tiempo real"
+        ],
+        previewHtml: `
+          <div style="font-size: 13px; font-weight: 800; color: var(--guisante); margin-bottom: 12px;">VISTA CLIENTE:</div>
+          <div style="background: var(--card); border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="width: 44px; height: 44px; border-radius: 22px; background: var(--guisante); display: flex; align-items: center; justify-content: center; font-weight: 900; color: var(--noche);">CM</div>
+              <div>
+                <div style="font-weight: 800; font-size: 14px;">Carlos Mendoza</div>
+                <div style="font-size: 12px; color: var(--text-muted);">Técnico Electricista Certificado</div>
+              </div>
+              <div style="margin-left: auto; color: #ffb703; font-size: 13px; font-weight: 700;">★ 5.0</div>
+            </div>
+            <div style="margin-top: 12px; font-size: 13px; line-height: 1.4;">Instalaciones eléctricas residenciales y comerciales con garantía de seguridad.</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px;">
+              <span style="font-weight: 800; font-size: 16px; color: var(--guisante);">$450 MXN / visita</span>
+              <span class="sim-badge sim-badge-green">Disponible Hoy</span>
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Checkout Seguro & Custodia Escrow",
+        text: "El cliente paga antes de iniciar la labor. El dinero se resguarda en garantía y se divide automáticamente: 10% para la plataforma y 90% para el Yoer al completar el trabajo.",
+        points: [
+          "Desglose financiero transparente con tarifa del 10% visible",
+          "Soporte Sandbox precargado con tarjetas de prueba oficiales de Stripe",
+          "El Yoer solo cobra cuando el cliente valida el trabajo terminado"
+        ],
+        previewHtml: `
+          <div style="font-size: 13px; font-weight: 800; color: var(--guisante); margin-bottom: 12px;">DESGLOSE FINANCIERO:</div>
+          <div style="background: var(--card); border-radius: 12px; padding: 16px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
+              <span style="color: var(--text-muted);">Monto acordado:</span>
+              <span>$1,000.00 MXN</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
+              <span style="color: var(--text-muted);">Comisión plataforma (10%):</span>
+              <span style="color: var(--guisante); font-weight: 700;">$100.00 MXN</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 13px;">
+              <span style="color: var(--text-muted);">Neto garantizado al Yoer:</span>
+              <span style="font-weight: 800;">$900.00 MXN</span>
+            </div>
+            <div style="background: var(--card-inner); padding: 10px; border-radius: 8px; font-size: 11px; color: var(--guisante); border: 1px solid var(--border);">
+              🛡️ Fondos resguardados en custodia hasta aprobación del cliente.
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Yoer Ads: El Meta Ads de los Oficios",
+        text: "Permite a cualquier trabajador independiente comprar paquetes de alcance (\$99, \$199 y \$399 MXN) para aparecer en el carrusel de recomendados y triplicar sus cotizaciones.",
+        points: [
+          "Micro-anuncios de 3, 7 y 15 días con estimador de alcance",
+          "Activación instantánea pagando con tarjeta Sandbox o saldo de cartera",
+          "Ingreso 100% de margen directo para la plataforma"
+        ],
+        previewHtml: `
+          <div style="font-size: 13px; font-weight: 800; color: var(--mandarina); margin-bottom: 12px;">PAQUETE SELECCIONADO:</div>
+          <div style="background: var(--card); border: 1.5px solid var(--mandarina); border-radius: 12px; padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="sim-badge sim-badge-orange">⭐ Campaña 7 Días</span>
+              <span style="font-size: 16px; font-weight: 900; color: var(--guisante);">$199 MXN</span>
+            </div>
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 4px;">Alcance Semanal Pro</div>
+            <div style="font-size: 12px; color: var(--text-muted);">🎯 2,500 – 5,000 personas alcanzadas en tu ciudad</div>
+            <div style="font-size: 11px; color: var(--papel); margin-top: 10px;">✓ Inclusión en carrusel de recomendados del feed principal</div>
+          </div>
+        `
+      },
+      {
+        title: "Validación de Identidad Facial (KYC)",
+        text: "Verificación biométrica automatizada con visión por computadora. Compara la selfie en vivo del usuario con su identificación oficial (INE o Pasaporte) para eliminar el fraude.",
+        points: [
+          "Algoritmo DeepFace con prueba de vida (anti-spoofing)",
+          "Hash criptográfico de documentos para evitar cuentas duplicadas",
+          "Trazabilidad de seguridad para clientes y proveedores"
+        ],
+        previewHtml: `
+          <div style="font-size: 13px; font-weight: 800; color: var(--guisante); margin-bottom: 12px;">ESTADO BIOMÉTRICO:</div>
+          <div style="background: var(--card); border-radius: 12px; padding: 16px; text-align: center;">
+            <div style="font-size: 36px; margin-bottom: 8px;">👤 ➔ 🪪</div>
+            <div style="font-weight: 800; font-size: 14px; color: var(--guisante);">Identidad Verificada ✓</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Similitud facial biométrica: 98.4%</div>
+            <div style="margin-top: 10px; font-size: 11px; background: var(--card-inner); padding: 6px; border-radius: 6px;">Credencial oficial: INE vigente validada</div>
+          </div>
+        `
+      },
+      {
+        title: "Cartera Digital YOER Cash",
+        text: "El panel financiero del Yoer. Administra saldo disponible, consulta saldos retenidos en garantía por tareas activas y permite retiros directos a cuenta bancaria (CLABE/SPEI).",
+        points: [
+          "Actualización en tiempo real vía Supabase Realtime",
+          "Historial detallado con desglose de pagos y comisiones",
+          "Retiros automáticos o programados vía transferencia bancaria"
+        ],
+        previewHtml: `
+          <div style="font-size: 13px; font-weight: 800; color: var(--guisante); margin-bottom: 12px;">BALANCE YOER CASH:</div>
+          <div style="background: linear-gradient(135deg, #273518, #31411E); border-radius: 12px; padding: 18px;">
+            <div style="font-size: 12px; color: var(--text-muted);">Saldo disponible para retiro:</div>
+            <div style="font-size: 28px; font-weight: 900; color: var(--guisante); margin: 4px 0;">$4,250.00 MXN</div>
+            <div style="font-size: 12px; color: var(--mandarina); margin-bottom: 14px;">⏳ $1,800.00 MXN en garantía (2 tareas activas)</div>
+            <button class="btn-cta" style="width: 100%; justify-content: center; font-size: 13px; padding: 8px !important;">
+              🏦 Retirar vía SPEI (CLABE)
+            </button>
+          </div>
+        `
+      }
+    ];
+
+    function switchTab(index, btn) {
+      document.querySelectorAll('.app-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const data = tabsData[index];
+      document.getElementById('tabTitle').innerText = data.title;
+      document.getElementById('tabText').innerText = data.text;
+      
+      let listHtml = '';
+      data.points.forEach(p => {
+        listHtml += `<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ${p}</li>`;
+      });
+      document.getElementById('tabPoints').innerHTML = listHtml;
+      document.getElementById('tabPreview').innerHTML = data.previewHtml;
+    }
+
+    // 2. Calculadora Financiera de Negocio
+    function updateCalculator() {
+      const servicios = parseInt(document.getElementById('rangeServicios').value);
+      const ticket = parseInt(document.getElementById('rangeTicket').value);
+      const ads = parseInt(document.getElementById('rangeAds').value);
+
+      document.getElementById('labelServicios').innerText = servicios.toLocaleString('es-MX');
+      document.getElementById('labelTicket').innerText = `$${ticket.toLocaleString('es-MX')} MXN`;
+      document.getElementById('labelAds').innerText = `${ads.toLocaleString('es-MX')} Yoers`;
+
+      // Cálculos
+      const gmv = servicios * ticket;
+      const comisiones = gmv * 0.10; // 10%
+      const gananciaAds = ads * 199.0; // $199 promedio
+      const totalMensual = comisiones + gananciaAds;
+      const totalAnual = totalMensual * 12;
+
+      document.getElementById('resGmv').innerText = `$${Math.round(gmv).toLocaleString('es-MX')} MXN`;
+      document.getElementById('resComisiones').innerText = `$${Math.round(comisiones).toLocaleString('es-MX')} MXN`;
+      document.getElementById('resAds').innerText = `$${Math.round(gananciaAds).toLocaleString('es-MX')} MXN`;
+      document.getElementById('resTotalMensual').innerText = `$${Math.round(totalMensual).toLocaleString('es-MX')} MXN`;
+      document.getElementById('resTotalAnual').innerText = `$${Math.round(totalAnual).toLocaleString('es-MX')} MXN`;
+    }
+
+    // 3. Modal de Pitch Deck
+    function openPitchModal() {
+      document.getElementById('pitchModal').style.display = 'flex';
+    }
+
+    function closePitchModal() {
+      document.getElementById('pitchModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
